@@ -1,0 +1,1 @@
+web: gunicorn sicInsta.wsgi --log-file -

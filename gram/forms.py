@@ -34,3 +34,11 @@ class ImageUploadForm(forms.ModelForm):
     image = forms.ImageField(label = "Image:")
     name = forms.CharField(label = "Image Name:", max_length=50)
     caption = forms.CharField(label = "Image Caption:", max_length=300)
+
+
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username', 'email']

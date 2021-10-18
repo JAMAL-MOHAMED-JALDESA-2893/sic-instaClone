@@ -3,13 +3,17 @@
 {% load cloudinary %}
 {% block content %}
     <div class="content-section">
+      <br><br>
         <div class="media">
-          <img class="rounded-circle account-img" src="{{ user.profile.prof_pic.url }}" alt="img" height="250px" width="300px">
+          <img class="rounded account-img" src="{{ user.profile.prof_pic.url }}" alt="img" height="250px" width="300px">
           <div class="media-body">
-            <h2 class="account-heading">{{ user.username }}</h2>
-            <p class="text-secondary">{{ user.email }}</p>
+            
+           
+            
           </div>
-        </div>
+          
+        </div><br>
+        <h2 class="account-heading">{{ user.username }}</h2>
         <!-- FORM HERE -->
         <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
@@ -19,7 +23,7 @@
               {{profForm|crispy }}
           </fieldset>
         <div class="form-group">
-            <button class="btn btn-outline-info" type="submit"><b style="color: black;">Update</b></button>
+            <button class="btn btn-outline-dark" type="submit"><b style="color: black;">Update</b></button>
         </div> 
       </form>
       </div>

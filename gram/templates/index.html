@@ -1,22 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
     {% for post in posts %}
+    <br><br>
         <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ post.image.url }}" height="300px" width="300px">
+          
+          <img class="rounded article-img" src="{{ post.image.url }}" height="250px" width="250px">
           <div class="media-body">
-            <div class="article-metadata">
-              <small class="text-muted">posted on {{ post.pub_date|date:"F d, Y" }}</small>
-            </div>
-            <h2><a class="article-title" href="{% url 'post-detail' post.id %}"><b style="color: black;">View Image</b></a></h2>
-            <p class="article-content">{{ post.caption }}</p>
+            
+            <br><br><br>
+            
           </div>
+          
           <a class="mr-2" href="{% url 'comment' post.id %}" style="color: #000;"><b>Comments</b></a>
+          
           {% if user.is_authenticated %}
+    
           <form action="{% url 'like_post' post.pk %}" method="POST">
+            
             {% csrf_token %}
-            <button type="submit" name="post_id" value="{{post.id}}" class="btn-sm btn-info"><b style="color: black;">Like</b></button>
+            <br><br><br>
+            <button type="submit" name="post_id" value="{{post.id}}" class="btn-sm btn-outline-dark"><b style="color: black;"><i class="bi bi-hand-thumbs-up"></i></b></button>
           </form>
           {% endif %}
         </article>
+        <h2><a class="article-title" href="{% url 'post-detail' post.id %}"><b style="color: black;"><i class="bi bi-eye-fill"></i>view post</b></a></h2>
+            <p class="article-content">{{ post.caption }}</p>
     {% endfor %}
 {% endblock content %}
